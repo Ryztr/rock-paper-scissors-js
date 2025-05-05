@@ -1,33 +1,44 @@
-
-// Computer will return randomly and conditionally one of the multiple choices 
-// ( between rock, paper and scissors )
-
-// You will write a function that takes a user choice and returns it. 
-// The function X will return one of the valid choices depending on what the user inputs
-
-// You will write variables to keep track of the players score
-// Create two variables in the global scope
-// Initialize those variables with the value of 0
-
-// Your game will be played round by round.
-// You will write afunction that takes the human and computer player choices as arguments, plays a single round
-// Increment the round winners score and logs a winner announcement
-
-
-
-
-
-function getComputerChoice() {
-
-    let randomNum = Math.floor(Math.random() * 3) + 1 ;
-
-    if (randomNum === 1) {
-        console.log("Rock");
-    }else if (randomNum === 2) {
-        console.log("Paper");
-    } else if (randomNum === 3) {
-        console.log("Scissors");
+function getComputerChoice(){
+    let computerRand = Math.floor(Math.random() * 3) + 1;
+    if (computerRand === 3) {
+        return "rock";
+    } else if (computerRand === 2) {
+        return  "paper";
+    } else if (computerRand === 1) {
+        return "scissors";
     }
 }
 
-console.log(getComputerChoice());
+
+function getHumanChoice() {
+    let answer = prompt("Choose between rock, paper and scissors:");
+    if (answer === "rock") {
+        return "rock";
+    } else if (answer === "paper"){
+        return "paper";
+    } else if (answer === "scissors") {
+        return "scissors";
+    } else {
+        return "Invalid Input!"
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    
+
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+
+console.log(humanSelection);
+console.log(computerSelection);
+
