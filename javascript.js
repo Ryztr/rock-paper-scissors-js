@@ -63,18 +63,28 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-//Declared variables that stores 
+//Declared variables that store the computer and human choices functions return () // use the variables as arguments for playRound parameters.
+//Being assigned to variables with () they get invoked so the functions run 
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
+//Also calling the playRound function, it runs the code, with the arguments as well.
+
 playRound(humanSelection, computerSelection);
+
+// ---> Tip for me to remember <---
 
 //You call multiple times with () because you want to runs the function and store return each time
 //So everytime you call "getHumanChoice()" you call the function and prompt and everytime you input a word a new value is giving
 //If you would've do humanSelection instead of the function then it would store the first result 5 times
 //It would store the first result 5 time because humanSelection = stores return (1 time, so 1 prompt so 1 result) but calling it 5 times gives you the same log 5 time
 //You could do this without the function playGame() but I know there is a better way, I don't know how to do it yet
+// -------------------------------------------------
+
+//Defined a function that calls playRound 5 times so is like playing 5 rounds. Keeps track of score from the playRound() function
+//Didn't understand the recursion concept yet and I googled hard for this part, seems that is pretty easy but hard to do it correctly which I know I didn't, hopefully updated soon as I get more knowledge..
+
 
 function playGame() {
     playRound(getHumanChoice(), getComputerChoice());
@@ -86,8 +96,10 @@ function playGame() {
   
   playGame();
 
+//Added more text log with the final result after the 5 rounds for better understanding.
 
 function score() {
+
     if (humanScore > computerScore) {
         console.log( `---> FINAL SCORE IS <---
 
@@ -95,7 +107,8 @@ Human: ${humanScore} | Computer: ${computerScore}
             
 Congratulations! You Won The Game!
 
-^^^^^^^^^^^^^^^^^^^^^^^`)
+^^^^^^^^^^^^^^^^^^^^^^^`);
+
     } else if (humanScore < computerScore){
         console.log( `---> FINAL SCORE IS <---
 
@@ -103,16 +116,21 @@ Human: ${humanScore} | Computer: ${computerScore}
                         
 Game Over! Computer Won!
             
-^^^^^^^^^^^^^^^^^^^^^^^`)
+^^^^^^^^^^^^^^^^^^^^^^^`);
     } else {
         console.log( `---> FINAL SCORE IS <---
 
 Human: ${humanScore} | Computer: ${computerScore} 
                                     
-Game Ended a Tie ! There Is No Winner!
+Game Ended a Tie ! There Is No Winner!s
                         
-^^^^^^^^^^^^^^^^^^^^^^^`)
+^^^^^^^^^^^^^^^^^^^^^^^`);
     }
 }
 
-score()
+score();
+
+
+//I have a bug where I get 6 inputs so there are 6 rounds instead of 5. That's because I invoked -- playRound(humanSelection, computerSelection) -- on line 74
+//If I would delete it then the playRound() functions wouldn't get the arguments and the game would start and end on a Tie
+//I will update hopefully soon and find a solution.
