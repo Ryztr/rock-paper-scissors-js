@@ -23,44 +23,90 @@ let humanScore = 0;
 let computerScore = 0;
 
 
+
 function playRound(humanChoice, computerChoice) {
 
 
     if (humanChoice === computerChoice) {
         console.log("It's a tie!");
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
         // return humanScore +=1;
     } else if (humanChoice === "rock" && computerChoice === "scissors") {
         console.log("You win! Rock beats Scissors!");
-        return humanScore +=1;
+        humanScore +=1;
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
     } else if (humanChoice === "rock" && computerChoice === "paper") {
         console.log("You lose! Paper beats Rock!");
-        return computerScore +=1;
+         computerScore +=1;
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
     } else if (humanChoice === "paper" && computerChoice === "rock") {
         console.log("You win! Paper beats Rock!");
-        return humanScore +=1;
+         humanScore +=1;
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
         console.log("You win! Paper beats Scissors!");
-        return humanScore +=1;
+         humanScore +=1;
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
         console.log("You lose! Rock beats Scissors!");
-        return computerScore +=1;
+         computerScore +=1;
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
     } else if (humanChoice === "scissors" && computerChoice === "paper") {
         console.log("You win! Scissors beats Paper!");
-        return humanScore +=1;
+         humanScore +=1;
+        console.log( `Human: ${humanScore} | Computer: ${computerScore}`)
     }
 
 }
-
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
-console.log(humanScore);
-console.log(computerScore);
+//You call multiple times with () because you want to runs the function and store return each time
+//So everytime you call "getHumanChoice()" you call the function and prompt and everytime you input a word a new value is giving
+//If you would've do humanSelection instead of the function then it would store the first result 5 times
+//It would store the first result 5 time because humanSelection = stores return (1 time, so 1 prompt so 1 result) but calling it 5 times gives you the same log 5 time
+// You could do this without the function playGame() but I know there is a better way, I don't know how to do it yet
 
-console.log(humanSelection);
-console.log(computerSelection);
+function playGame() {
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+  }
+  
+  playGame();
 
- 
+
+function score() {
+    if (humanScore > computerScore) {
+        console.log( `---> FINAL SCORE IS <---
+
+Human: ${humanScore} | Computer: ${computerScore} 
+            
+Congratulations! You Won The Game!
+
+^^^^^^^^^^^^^^^^^^^^^^^`)
+    } else if (humanScore < computerScore){
+        console.log( `---> FINAL SCORE IS <---
+
+Human: ${humanScore} | Computer: ${computerScore} 
+                        
+Game Over! Computer Won!
+            
+^^^^^^^^^^^^^^^^^^^^^^^`)
+    } else {
+        console.log( `---> FINAL SCORE IS <---
+
+Human: ${humanScore} | Computer: ${computerScore} 
+                                    
+Game Ended a Tie! There Is No Winner!
+                        
+^^^^^^^^^^^^^^^^^^^^^^^`)
+    }
+}
+
+score()
